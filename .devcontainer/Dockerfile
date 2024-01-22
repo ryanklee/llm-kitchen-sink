@@ -8,22 +8,17 @@ RUN pip install poetry
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
+# Copy only pyproject.toml and poetry.lock (if available) to cache dependencies
+COPY pyproject.toml poetry.lock* /app/
+
+# Configure Poetry:
+# - virtualenvs.create true: Create virtual environment inside the project directory
+# - virtualenvs.in-project true: Create .venv directory in the project folder
+RUN poetry config virtualenvs.create true \
+    && poetry config virtualenvs.in-project true
+
+# Install dependencies (including the project itself if it's a package)
+RUN poetry install --no-interaction --no-ansi
+
+# Copy the rest of your project
 COPY . /app
-
-# Install dependencies using Poetry
-# Note: The --no-root option is used to not install the current project package
-RUN poetry config virtualenvs.create false \
-    && poetry install --no-interaction --no-ansi --no-root
-
-# [Optional] If your requirements rarely change, uncomment this section to add them to the image.
-# COPY requirements.txt /tmp/pip-tmp/
-# RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
-#    && rm -rf /tmp/pip-tmp
-
-# [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
-
-
-
