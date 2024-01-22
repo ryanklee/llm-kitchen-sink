@@ -2,11 +2,25 @@ FROM mcr.microsoft.com/devcontainers/python:1-3.11-bullseye
 
 ENV PYTHONUNBUFFERED 1
 
+# Install Fish shell and other utilities
+RUN apt-get update && apt-get install -y \
+    fish \
+    curl \
+    git \
+    # Include any other utilities you need here
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Starship
+RUN curl -sS https://starship.rs/install.sh | sh -s -- -y
+
+# Set up Fish as the default shell
+SHELL ["/usr/bin/fish", "-c"]
+
 # Install Poetry
 RUN pip install poetry
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /app    
 
 # Copy only pyproject.toml and poetry.lock (if available) to cache dependencies
 COPY pyproject.toml poetry.lock* /app/
