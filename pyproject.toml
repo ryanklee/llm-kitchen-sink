@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "llm-kitchen-sink"
+version = "0.1.0"
+description = ""
+authors = ["Ryan Kleeberger <rylklee@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+aider-chat = "^0.21.1"
+llm = "^0.12"
+shell-gpt = "^1.1.0"
+
+[tool.poetry.group.dev.dependencies]
+shell-gpt = "^1.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
