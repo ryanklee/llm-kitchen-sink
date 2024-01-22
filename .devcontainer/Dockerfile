@@ -36,3 +36,6 @@ RUN poetry install --no-interaction --no-ansi
 
 # Copy the rest of your project
 COPY . /app
+
+# Fish shell initialization
+RUN printf 'if test -f /app/poetry.lock\n    and command -q poetry\n    source (poetry env info --path)/bin/activate.fish\nend\n' > /etc/fish/conf.d/poetry.fish

@@ -11,11 +11,20 @@
 		"ghcr.io/devcontainers-contrib/features/poetry:2": {},
 		"ghcr.io/devcontainers-contrib/features/starship:1": {}
 	},
+
 	"containerEnv": {
         "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"
     },	
 	"customizations": {
 		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "fish",
+				"terminal.integrated.profiles.linux": {
+					"fish": {
+						"path": "fish"
+					}
+				}
+			},
 			"extensions": [
 				"appland.appmap",
 				"batisteo.vscode-django",
@@ -72,7 +81,8 @@
 				"wholroyd.jinja",
 				"yzhang.markdown-all-in-one"
 			]
-		}
+		},
+		"postCreateCommand": "poetry install"
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
