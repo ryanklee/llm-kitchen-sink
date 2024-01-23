@@ -29,8 +29,11 @@ RUN echo 'curl -sL https://git.io/fisher | source; \
     | fish
 
 # Initialize Starship in Fish shell for the vscode user
+# Ensure all directories exist before writing files
 RUN mkdir -p $USER_HOME_DIR/.config/fish \
+    && mkdir -p $USER_HOME_DIR/.config/fish/conf.d \
     && echo 'starship init fish | source' >> $USER_HOME_DIR/.config/fish/config.fish \
+    && printf 'if test -f /app/poetry.lock\n    and command -q poetry\n    source (poetry env info --path)/bin/activate.fish\nend\n' > $USER_HOME_DIR/.config/fish/conf.d/poetry.fish \
     && chown -R vscode:vscode $USER_HOME_DIR/.config
 
 # Copy pyproject.toml and poetry.lock (if available) to cache dependencies
@@ -41,11 +44,6 @@ RUN poetry install --no-interaction --no-ansi
 
 # Copy the rest of your project
 COPY . /app
-
-# Configure Fish shell to automatically activate the Poetry environment
-# This is for the vscode user, so we use the $USER_HOME_DIR variable
-RUN printf 'if test -f /app/poetry.lock\n    and command -q poetry\n    source (poetry env info --path)/bin/activate.fish\nend\n' > $USER_HOME_DIR/.config/fish/conf.d/poetry.fish \
-    && chown -R vscode:vscode $USER_HOME_DIR/.config
 
 # Set Fish as the default shell
 SHELL ["/usr/bin/fish", "-c"]
