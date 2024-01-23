@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
-aider-chat = "*"
+aider-chat = ">=0.22.0"
 llm = "*"
 shell-gpt = "*"
 

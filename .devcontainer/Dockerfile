@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y \
         curl \
         git \
     && rm -rf /var/lib/apt/lists/* \
-    && curl -sS https://starship.rs/install.sh | sh -s -- -y
+    && curl -sS https://starship.rs/install.sh | sh -s -- -y \
+    && curl https://ollama.ai/install.sh | sh
 
 # Install Poetry and configure it
 RUN pip install poetry \
@@ -29,13 +30,15 @@ RUN echo 'curl -sL https://git.io/fisher | source; \
     | fish
 
 # Initialize Starship in Fish shell for the vscode user
-# Ensure all directories exist before writing files
-RUN mkdir -p $USER_HOME_DIR/.config/fish \
-    && mkdir -p $USER_HOME_DIR/.config/fish/conf.d \
+RUN mkdir -p $USER_HOME_DIR/.config/fish/conf.d \
+    # Create a default config.fish file
+    && echo '# Fish shell configuration file' > $USER_HOME_DIR/.config/fish/config.fish \
+    && echo '' >> $USER_HOME_DIR/.config/fish/config.fish \
+    # Append Starship initialization
     && echo 'starship init fish | source' >> $USER_HOME_DIR/.config/fish/config.fish \
+    # Fish shell configuration to automatically activate the Poetry environment
     && printf 'if test -f /app/poetry.lock\n    and command -q poetry\n    source (poetry env info --path)/bin/activate.fish\nend\n' > $USER_HOME_DIR/.config/fish/conf.d/poetry.fish \
     && chown -R vscode:vscode $USER_HOME_DIR/.config
-
 # Copy pyproject.toml and poetry.lock (if available) to cache dependencies
 COPY pyproject.toml poetry.lock* /app/
 
