@@ -16,10 +16,11 @@ RUN apt-get update && apt-get install -y \
     && curl -sS https://starship.rs/install.sh | sh -s -- -y \
     && curl https://ollama.ai/install.sh | sh
 
-# Install Poetry and configure it
+# Install Poetry, configure it, and ensure the correct Python version is used
 RUN pip install poetry \
     && poetry config virtualenvs.create true \
-    && poetry config virtualenvs.in-project true
+    && poetry config virtualenvs.in-project true \
+    && poetry env use python3.11
 
 # Install Fisher and plugins using a Fish shell script
 RUN echo 'curl -sL https://git.io/fisher | source; \
