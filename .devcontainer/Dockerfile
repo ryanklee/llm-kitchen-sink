@@ -16,6 +16,9 @@ RUN apt-get update && apt-get install -y \
     && curl -sS https://starship.rs/install.sh | sh -s -- -y \
     && curl https://ollama.ai/install.sh | sh
 
+# Copy pyproject.toml (if available) to cache dependencies
+COPY pyproject.toml* /app/
+
 # Install Poetry, configure it, and ensure the correct Python version is used
 RUN pip install poetry \
     && poetry config virtualenvs.create true \
