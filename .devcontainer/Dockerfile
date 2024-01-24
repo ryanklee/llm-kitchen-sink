@@ -42,9 +42,10 @@ RUN mkdir -p $USER_HOME_DIR/.config/fish/conf.d \
 # Copy pyproject.toml and poetry.lock (if available) to cache dependencies
 COPY pyproject.toml poetry.lock* /app/
 
-# Install dependencies and update Poetry environment
+# Install dependencies, update Poetry environment, and install 'aider-chat'
 RUN poetry install --no-interaction --no-ansi \
-    && poetry env use python
+    && poetry env use python \
+    && poetry add aider-chat
 
 # Copy the rest of your project and install aider-chat
 COPY . /app
