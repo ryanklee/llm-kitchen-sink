@@ -69,7 +69,7 @@
 				"yzhang.markdown-all-in-one"
 			]
 		},
-		"postCreateCommand": "poetry install"
+		"postCreateCommand": "poetry install --no-root"
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
