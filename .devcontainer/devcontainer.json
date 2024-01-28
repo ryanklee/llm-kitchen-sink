@@ -73,7 +73,8 @@
 		},
 		"postCreateCommand": [
 		    "poetry env use python",
-		    "poetry install --no-root"
+		    "poetry install --no-root",
+		    "poetry shell"
 		]
 	}
 
