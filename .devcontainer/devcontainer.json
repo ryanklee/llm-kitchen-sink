@@ -9,7 +9,10 @@
 		"ghcr.io/devcontainers/features/nvidia-cuda:1": {},
 		"ghcr.io/devcontainers-contrib/features/fish-apt-get:1": {},
 		"ghcr.io/devcontainers-contrib/features/poetry:2": {},
-		"ghcr.io/devcontainers-contrib/features/starship:1": {}
+		"ghcr.io/devcontainers-contrib/features/starship:1": {},
+		"ghcr.io/meaningful-ooo/devcontainer-features/fish:1": {},
+		"ghcr.io/prulloac/devcontainer-features/ollama:1": {}
+
 	},
 
 	"containerEnv": {
@@ -72,8 +75,6 @@
 		"postCreateCommand": "poetry install --no-root"
 	}
 
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// This can be used to network with other containers or the host.
