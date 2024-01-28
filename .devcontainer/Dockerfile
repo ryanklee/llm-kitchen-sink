@@ -14,6 +14,4 @@ RUN apt-get update && apt-get install -y \
 # Copy the rest of your project
 COPY . /app
 
-# Add poetry environment path to fish shell configuration
-RUN mkdir -p ~/.config/fish && echo 'set -gx PATH $PATH /workspaces/llm-kitchen-sink/.venv/bin' >> ~/.config/fish/config.fish
 

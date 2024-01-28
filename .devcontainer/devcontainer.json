@@ -74,7 +74,8 @@
 		},
 		"postCreateCommand": [
 		    "poetry install --no-root",
-		    "fish -c 'fisher install PatrickF1/fzf.fish'"
+		    "fish -c 'fisher install PatrickF1/fzf.fish'",
+		    "fish -c 'echo set -gx PATH $PATH /workspaces/llm-kitchen-sink/.venv/bin >> ~/.config/fish/config.fish'"
 		]
 	}
 
