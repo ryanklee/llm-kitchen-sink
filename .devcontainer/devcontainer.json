@@ -72,7 +72,10 @@
 				"yzhang.markdown-all-in-one"
 			]
 		},
-		"postCreateCommand": "poetry install --no-root"
+		"postCreateCommand": [
+		    "poetry install --no-root",
+		    "fish -c 'fisher install PatrickF1/fzf.fish'"
+		]
 	}
 
 

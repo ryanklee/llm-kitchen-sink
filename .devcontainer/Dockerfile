@@ -17,5 +17,3 @@ COPY . /app
 # Add poetry environment path to fish shell configuration
 RUN echo 'set -gx PATH $PATH /workspaces/llm-kitchen-sink/.venv/bin' >> ~/.config/fish/config.fish
 
-# Install fish plugins
-RUN fish -c "fisher install PatrickF1/fzf.fish"
