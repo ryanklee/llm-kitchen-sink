@@ -13,3 +13,6 @@ RUN apt-get update && apt-get install -y \
 
 # Copy the rest of your project
 COPY . /app
+
+# Add poetry environment path to fish shell configuration
+RUN echo 'set -gx PATH $PATH $HOME/.poetry/bin' >> ~/.config/fish/config.fish
