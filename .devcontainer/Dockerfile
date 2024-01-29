@@ -11,6 +11,19 @@ RUN apt-get update && apt-get install -y \
         bat \
     && rm -rf /var/lib/apt/lists/*
 
+# Assuming Poetry is already installed
+
+# Set Poetry configuration to create virtual environments inside the project
+ENV POETRY_VIRTUALENVS_IN_PROJECT=true
+ENV POETRY_NO_INTERACTION=1
+
+# Install project dependencies
+COPY pyproject.toml poetry.lock ./
+RUN poetry install --no-interaction
+
+# Set the PATH to use the virtual environment
+ENV PATH="/workspaces/${localWorkspaceFolderBasename}/.venv/bin:$PATH"
+
 # Copy the rest of your project
 COPY . /app
 
