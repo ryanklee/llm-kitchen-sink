@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
         bat \
     && rm -rf /var/lib/apt/lists/*
 
-# Assuming Poetry is already installed
+# Install Poetry
+RUN curl -sSL https://install.python-poetry.org | python -
 
 # Set Poetry configuration to create virtual environments inside the project
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true
