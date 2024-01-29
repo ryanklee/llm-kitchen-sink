@@ -24,7 +24,8 @@ ENV PATH="/workspaces/${localWorkspaceFolderBasename}/.venv/bin:$PATH"
 # Copy the rest of your project
 COPY . /app
 
-# Add poetry bin path to fish_user_paths
+# Add poetry bin path to fish_user_paths and initiate starship
 RUN echo 'set -U fish_user_paths (poetry env info --path)/bin $fish_user_paths' >> ~/.config/fish/config.fish
+RUN echo 'starship init fish | source' >> ~/.config/fish/config.fish
 
 
