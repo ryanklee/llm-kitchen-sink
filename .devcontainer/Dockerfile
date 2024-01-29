@@ -24,4 +24,7 @@ ENV PATH="/workspaces/${localWorkspaceFolderBasename}/.venv/bin:$PATH"
 # Copy the rest of your project
 COPY . /app
 
+# Add poetry bin path to fish_user_paths
+RUN echo 'set -U fish_user_paths (poetry env info --path)/bin $fish_user_paths' >> ~/.config/fish/config.fish
+
 
