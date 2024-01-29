@@ -11,19 +11,12 @@ RUN apt-get update && apt-get install -y \
         bat \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Poetry
-RUN curl -sSL https://install.python-poetry.org | python -
-
-# Install Poetry
-RUN curl -sSL https://install.python-poetry.org | python -
-
 # Set Poetry configuration to create virtual environments inside the project
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true
 ENV POETRY_NO_INTERACTION=1
 
 # Install project dependencies
 COPY pyproject.toml poetry.lock ./
-RUN poetry install --no-interaction
 
 # Set the PATH to use the virtual environment
 ENV PATH="/workspaces/${localWorkspaceFolderBasename}/.venv/bin:$PATH"
