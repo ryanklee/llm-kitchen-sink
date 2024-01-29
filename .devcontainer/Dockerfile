@@ -14,6 +14,9 @@ RUN apt-get update && apt-get install -y \
 # Install Poetry
 RUN curl -sSL https://install.python-poetry.org | python -
 
+# Install Poetry
+RUN curl -sSL https://install.python-poetry.org | python -
+
 # Set Poetry configuration to create virtual environments inside the project
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true
 ENV POETRY_NO_INTERACTION=1
