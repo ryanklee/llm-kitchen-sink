@@ -9,15 +9,9 @@ RUN apt-get update && apt-get install -y \
         fzf \
         fd-find \
         bat \
-        gnupg \
-        lsb-release \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -sL https://nvidia.github.io/nvidia-docker/gpgkey | apt-key add - \
-    && curl -sL https://nvidia.github.io/nvidia-docker/$(. /etc/os-release;echo $ID$VERSION_ID)/nvidia-docker.list | tee /etc/apt/sources.list.d/nvidia-docker.list \
-    && apt-get update \
-    && apt-get install -y nvidia-driver-510 nvidia-cuda-toolkit \
-    && rm -rf /var/lib/apt/lists/*
+
 
 # Set Poetry configuration to create virtual environments inside the project
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true
