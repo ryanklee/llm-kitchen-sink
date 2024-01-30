@@ -5,6 +5,7 @@
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"runArgs": ["--gpus", "all"],
 	"features": {
 		"ghcr.io/devcontainers/features/nvidia-cuda:1": {
 			"installTookit": true
@@ -14,7 +15,6 @@
 		"ghcr.io/prulloac/devcontainer-features/ollama:1": {},
 		"ghcr.io/devcontainers-contrib/features/poetry:2": {}
 	},
-
 	"containerEnv": {
         "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"
     },	
