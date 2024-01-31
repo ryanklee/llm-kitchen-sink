@@ -5,6 +5,14 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: 1
+            capabilities: [gpu]
+    runtime: nvidia
 
     volumes:
       - ../..:/workspaces:cached
