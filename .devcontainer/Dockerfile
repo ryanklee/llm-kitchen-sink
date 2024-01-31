@@ -13,13 +13,6 @@ RUN apt-get update && apt-get install -y \
         software-properties-common \
     && rm -rf /var/lib/apt/lists/*
 
-# Add NVIDIA package repositories
-RUN curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | apt-key add - \
-    && curl -s -L https://nvidia.github.io/nvidia-docker/$(. /etc/os-release;echo $ID$VERSION_ID)/nvidia-docker.list | tee /etc/apt/sources.list.d/nvidia-docker.list \
-    && apt-get update && apt-get install -y nvidia-docker2 nvidia-container-runtime
-
-# Set NVIDIA as the default runtime
-RUN echo '{ "default-runtime": "nvidia" }' > /etc/docker/daemon.json
 
 # Set Poetry configuration to create virtual environments inside the project
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true
