@@ -5,9 +5,12 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
+    runtime: nvidia
 
     volumes:
       - ../..:/workspaces:cached
+    command: sleep infinity
+    network_mode: service:db
 
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
