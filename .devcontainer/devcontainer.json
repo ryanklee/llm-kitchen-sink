@@ -9,8 +9,7 @@
 		"gpu": true 
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/nvidia-cuda:1": {
-			"installTookit": true
+		"ghcr.io/devcontainers/features/nvidia-cuda:1": {}
 		},
 		"ghcr.io/devcontainers-contrib/features/fish-apt-get:1": {},
 		"ghcr.io/devcontainers-contrib/features/starship:1": {},
