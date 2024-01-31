@@ -5,7 +5,9 @@
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-	"runArgs": ["--gpus", "all"],
+	"hostRequirements": {
+		"gpu": true 
+	},
 	"features": {
 		"ghcr.io/devcontainers/features/nvidia-cuda:1": {
 			"installTookit": true
@@ -95,4 +97,3 @@
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }
-		    "nvidia-smi"
