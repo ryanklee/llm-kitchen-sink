@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.3.1-cudnn8-runtime-ubuntu20.04
+FROM mcr.microsoft.com/devcontainers/python:1-3.11-bullseye
 
 ENV PYTHONUNBUFFERED 1
 
