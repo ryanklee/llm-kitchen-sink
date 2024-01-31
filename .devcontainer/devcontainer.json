@@ -17,6 +17,7 @@
 		"ghcr.io/prulloac/devcontainer-features/ollama:1": {},
 		"ghcr.io/devcontainers-contrib/features/poetry:2": {}
 	},
+	"runArgs": ["--gpus", "all"],
 	"containerEnv": {
         "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"
     },	
