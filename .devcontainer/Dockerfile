@@ -38,7 +38,8 @@ ENV POETRY_NO_INTERACTION=1 \
 COPY pyproject.toml poetry.lock ./
 
 # Set the PATH to use the virtual environment
-RUN echo 'set -U fish_user_paths /workspaces/${localWorkspaceFolderBasename}/.venv/bin $fish_user_paths' | sudo -u vscode fish
+RUN mkdir -p /home/vscode/.config/fish && chown -R vscode:vscode /home/vscode/.config && \
+    echo 'set -U fish_user_paths /workspaces/'"$localWorkspaceFolderBasename"'/.venv/bin $fish_user_paths' | sudo -u vscode fish
 
 # Copy the rest of your project
 COPY . /app
