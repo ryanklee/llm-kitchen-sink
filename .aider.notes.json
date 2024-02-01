@@ -2,6 +2,12 @@
   "issue": "Fish shell not set as default",
   "status": "open",
   "steps": [],
+  "steps": [
+    {
+      "description": "Investigation into Fish shell not being set as default is ongoing.",
+      "timestamp": "YYYY-MM-DDTHH:MM:SSZ"
+    }
+  ],
   "metadata": {
     "relatedFiles": [
       ".devcontainer/Dockerfile",
