@@ -11,7 +11,11 @@ RUN apt-get update && apt-get install -y \
         bat \
         gnupg2 \
         software-properties-common \
+        fish \
     && rm -rf /var/lib/apt/lists/*
+
+# Set Fish as the default shell for the vscode user
+RUN chsh -s /usr/bin/fish vscode
 
 
 # Set Poetry configuration to create virtual environments inside the project
