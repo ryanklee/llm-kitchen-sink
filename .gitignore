@@ -16,5 +16,5 @@ poetry.lock
 # Ignore .aider* files except for .aider.notes.json
 .aider*
 !.aider.notes.json
+!.aider.notes.json
 #.aider*
-.aider.notes.json
