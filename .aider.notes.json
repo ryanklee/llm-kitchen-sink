@@ -1,16 +1,34 @@
 {
-    "issues": [
-        {
-            "id": 1,
-            "title": "NVIDIA GPU support in Docker container",
-            "description": "Ensure that the Docker container can access the host's NVIDIA GPU for CUDA operations.",
-            "status": "open",
-            "comments": [
-                {
-                    "date": "YYYY-MM-DD",
-                    "text": "Initial issue creation."
-                }
-            ]
-        }
+  "issue": "NVIDIA GPU support in Docker container",
+  "status": "in progress",
+  "steps": [
+    {
+      "description": "Removed explicit NVIDIA runtime specification from docker-compose.yml",
+      "timestamp": "2023-04-05T14:00:00Z"
+    },
+    {
+      "description": "Verified NVIDIA Container Toolkit installation on host",
+      "timestamp": "2023-04-05T15:00:00Z"
+    }
+  ],
+  "metadata": {
+    "relatedFiles": [
+      ".devcontainer/Dockerfile",
+      ".devcontainer/docker-compose.yml",
+      ".devcontainer/devcontainer.json"
+    ],
+    "gitCommits": [
+      {
+        "hash": "0d73043",
+        "message": "Use NVIDIA runtime for the `app` service"
+      },
+      {
+        "hash": "8b0b03e",
+        "message": "Remove manual installation of NVIDIA components"
+      }
+    ],
+    "errorMessages": [
+      "Error response from daemon: unknown or invalid runtime name: nvidia"
     ]
+  }
 }
