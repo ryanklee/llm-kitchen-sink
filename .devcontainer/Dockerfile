@@ -39,8 +39,12 @@ COPY . /app
 
 # Add poetry bin path to fish_user_paths and initiate starship
 RUN mkdir -p /home/vscode/.config/fish && chown -R vscode:vscode /home/vscode/.config/fish
-RUN echo 'for file in ~/.config/fish/conf.d/*.fish; source $file; end' > /home/vscode/.config/fish/config.fish
-RUN mkdir -p /home/vscode/.config/fish/conf.d && echo 'starship init fish | source' > /home/vscode/.config/fish/conf.d/starship.fish && chown -R vscode:vscode /home/vscode/.config/fish/conf.d/starship.fish
-RUN echo 'fish_add_path (poetry env info --path)/bin' >> /home/vscode/.config/fish/config.fish
+RUN echo 'for file in ~/.config/fish/conf.d/*.fish; source $file; end' > /home/vscode/.config/fish/config.fish && \
+    mkdir -p /home/vscode/.config/fish/conf.d && \
+    echo 'starship init fish | source' > /home/vscode/.config/fish/conf.d/starship.fish && \
+    chown -R vscode:vscode /home/vscode/.config/fish/conf.d/starship.fish && \
+    poetry env use python3.11 && \
+    poetry install --no-interaction --no-root && \
+    echo 'set -U fish_user_paths /workspaces/${localWorkspaceFolderBasename}/.venv/bin $fish_user_paths' >> /home/vscode/.config/fish/config.fish
 
 

@@ -2,13 +2,23 @@
   "issue": "Starship not initialized on login into the Fish shell",
   "status": "open",
   "steps": [],
-  "steps": [],
+  "steps": [
+    {
+      "description": "Fixed the fish_add_path command in config.fish to correctly set the path to the poetry environment's bin directory.",
+      "timestamp": "YYYY-MM-DDTHH:MM:SSZ"
+    }
+  ],
   "metadata": {
     "relatedFiles": [
       ".devcontainer/Dockerfile",
       ".devcontainer/devcontainer.json"
     ],
-    "gitCommits": [],
+    "gitCommits": [
+      {
+        "description": "Fix poetry path in Fish shell initialization",
+        "hash": "GIT_COMMIT_HASH"
+      }
+    ],
     "errorMessages": []
   }
 },
