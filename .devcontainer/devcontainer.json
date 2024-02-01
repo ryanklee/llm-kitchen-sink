@@ -76,11 +76,10 @@
 			]
 		},
 		"postCreateCommand": [
-		    "set -Ux POETRY_VIRTUALENVS_IN_PROJECT true",
-		    "poetry env use python3.11",
-		    "poetry install --no-interaction --no-root",
-		    "poetry shell",
-		    "set -U fish_user_paths (poetry env info --path)/bin $fish_user_paths"
+		    "fish -c 'set -Ux POETRY_VIRTUALENVS_IN_PROJECT true'",
+		    "fish -c 'poetry env use python3.11'",
+		    "fish -c 'poetry install --no-interaction --no-root'",
+		    "fish -c 'set -U fish_user_paths (poetry env info --path)/bin $fish_user_paths'"
 		]
 	}
 
