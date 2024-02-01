@@ -13,4 +13,4 @@ __pycache__/
 # Ignore Poetry lock file (optional)
 poetry.lock
 
-.aider*
+#.aider*
