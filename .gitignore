@@ -1,2 +1,16 @@
-.aider*
+# Ignore the virtual environment directory
+.venv/
+.env/
+
+# Ignore Python build artifacts
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.so
+*.egg-info/
+
+# Ignore Poetry lock file (optional)
 poetry.lock
+
+.aider*
