@@ -26,7 +26,8 @@ ENV POETRY_NO_INTERACTION=1
 
 # Install Poetry
 RUN curl -sSL https://install.python-poetry.org | python3 - && \
-    echo 'export PATH="/root/.local/bin:$PATH"' >> $HOME/.bashrc && \
+    mkdir -p /home/vscode/.config/fish/conf.d && \
+    echo 'set -U fish_user_paths /root/.local/bin $fish_user_paths' >> /home/vscode/.config/fish/conf.d/poetry_path.fish && \
     /root/.local/bin/poetry config virtualenvs.create false
 
 # Set Poetry configuration to create virtual environments inside the project
@@ -49,7 +50,7 @@ RUN mkdir -p /home/vscode/.config/fish/conf.d
 RUN echo 'starship init fish | source' > /home/vscode/.config/fish/conf.d/starship.fish
 RUN chown -R vscode:vscode /home/vscode/.config/fish/conf.d/starship.fish
 # Use the installed Poetry to set up the environment
-ENV PATH="/root/.local/bin:$PATH"
 RUN poetry env use python3.11
 RUN poetry install --no-interaction --no-root -n $(nproc)
+RUN echo 'set -U fish_user_paths /workspaces/${localWorkspaceFolderBasename}/.venv/bin $fish_user_paths' >> /home/vscode/.config/fish/config.fish
 RUN echo 'set -U fish_user_paths /workspaces/${localWorkspaceFolderBasename}/.venv/bin $fish_user_paths' >> /home/vscode/.config/fish/config.fish
