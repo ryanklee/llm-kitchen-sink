@@ -1,0 +1,16 @@
+{
+    "issues": [
+        {
+            "id": 1,
+            "title": "NVIDIA GPU support in Docker container",
+            "description": "Ensure that the Docker container can access the host's NVIDIA GPU for CUDA operations.",
+            "status": "open",
+            "comments": [
+                {
+                    "date": "YYYY-MM-DD",
+                    "text": "Initial issue creation."
+                }
+            ]
+        }
+    ]
+}
