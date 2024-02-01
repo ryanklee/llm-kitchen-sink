@@ -39,6 +39,6 @@ COPY . /app
 
 # Add poetry bin path to fish_user_paths and initiate starship
 RUN mkdir -p /home/vscode/.config/fish && chown -R vscode:vscode /home/vscode/.config/fish && echo 'set -U fish_user_paths (poetry env info --path)/bin $fish_user_paths' >> /home/vscode/.config/fish/config.fish
-RUN echo 'starship init fish | source' > /home/vscode/.config/fish/conf.d/starship.fish
+RUN echo 'starship init fish | source' > /home/vscode/.config/fish/conf.d/starship.fish && chown -R vscode:vscode /home/vscode/.config/fish/conf.d/starship.fish
 
 
