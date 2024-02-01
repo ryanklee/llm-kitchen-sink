@@ -51,4 +51,6 @@ RUN mkdir -p /home/vscode/.config/fish/conf.d
 RUN echo 'starship init fish | source' > /home/vscode/.config/fish/conf.d/starship.fish
 RUN chown -R vscode:vscode /home/vscode/.config/fish/conf.d/starship.fish
 # Use the installed Poetry to set up the environment
-RUN sudo -u vscode fish -c 'poetry env use python3.11 && poetry install --no-interaction --no-root -n (nproc)'
+RUN echo 'set -U fish_user_paths /root/.local/bin $fish_user_paths' >> /home/vscode/.config/fish/config.fish && \
+    chown -R vscode:vscode /home/vscode/.config && \
+    sudo -u vscode fish -c 'source /home/vscode/.config/fish/config.fish; poetry env use python3.11 && poetry install --no-interaction --no-root -n (nproc)'
