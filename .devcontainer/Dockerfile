@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
         gnupg2 \
         software-properties-common \
         fish \
+        starship \
     && rm -rf /var/lib/apt/lists/*
 
 # Set Fish as the default shell for the vscode user
@@ -48,7 +49,7 @@ COPY . /app
 RUN mkdir -p /home/vscode/.config/fish && chown -R vscode:vscode /home/vscode/.config/fish
 RUN echo 'for file in ~/.config/fish/conf.d/*.fish; source $file; end' > /home/vscode/.config/fish/config.fish
 RUN mkdir -p /home/vscode/.config/fish/conf.d
-RUN echo 'starship init fish | source' > /home/vscode/.config/fish/conf.d/starship.fish
+RUN echo 'starship init fish | source' >> /home/vscode/.config/fish/conf.d/starship.fish
 RUN chown -R vscode:vscode /home/vscode/.config/fish/conf.d/starship.fish
 # Use the installed Poetry to set up the environment
 RUN echo 'set -U fish_user_paths /root/.local/bin $fish_user_paths' >> /home/vscode/.config/fish/config.fish && \
