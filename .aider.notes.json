@@ -1,23 +1,8 @@
 {
-  "issue": "Fish shell not set as default",
+  "issue": "Starship not initialized on login into the Fish shell",
   "status": "open",
   "steps": [],
-  "steps": [
-    {
-      "description": "Investigation into Fish shell not being set as default is ongoing.",
-      "timestamp": "2024-02-01T03:09:54Z",
-      "hypotheses": [
-        "The Fish shell is installed but not set as the default shell for the container.",
-        "The Dockerfile may have commands that are not executed properly to set Fish as the default shell."
-      ],
-      "changes": [
-        {
-          "description": "Updated the Dockerfile to set Fish as the default shell for the vscode user.",
-          "reason": "The previous configuration did not persist the default shell setting for the vscode user."
-        }
-      ]
-    }
-  ],
+  "steps": [],
   "metadata": {
     "relatedFiles": [
       ".devcontainer/Dockerfile",
