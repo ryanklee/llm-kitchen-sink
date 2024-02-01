@@ -12,7 +12,7 @@ services:
           - driver: nvidia
             count: 1
             capabilities: [gpu]
-    runtime: nvidia
+
 
     volumes:
       - ../..:/workspaces:cached
