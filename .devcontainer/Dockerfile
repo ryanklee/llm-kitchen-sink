@@ -18,12 +18,6 @@ RUN apt-get update && apt-get install -y \
 RUN chsh -s /usr/bin/fish vscode
 
 
-# Set Poetry configuration to create virtual environments inside the project
-ENV POETRY_VIRTUALENVS_IN_PROJECT=true
-ENV POETRY_NO_INTERACTION=1
-
-
-
 
 # Set Poetry configuration to create virtual environments inside the project
 ENV POETRY_NO_INTERACTION=1 \
@@ -33,9 +27,7 @@ ENV POETRY_NO_INTERACTION=1 \
 COPY pyproject.toml poetry.lock ./
 
 # Set the PATH to use the virtual environment
-RUN mkdir -p /home/vscode/.config/fish && chown -R vscode:vscode /home/vscode/.config && \
-    echo 'set -U fish_user_paths /workspaces/'"$localWorkspaceFolderBasename"'/.venv/bin $fish_user_paths' >> /home/vscode/.config/fish/config.fish && \
-    chown -R vscode:vscode /home/vscode/.config
+RUN mkdir -p /home/vscode/.config/fish && chown -R vscode:vscode /home/vscode/.config
 
 # Copy the rest of your project
 COPY . /app
