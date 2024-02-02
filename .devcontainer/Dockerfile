@@ -11,14 +11,17 @@ RUN apt-get update && apt-get install -y \
         bat \
         gnupg2 \
         software-properties-common \
+        fish \
     && rm -rf /var/lib/apt/lists/*
 
 # Set Fish as the default shell for the vscode user
 RUN chsh -s /usr/bin/fish vscode
 
-# Set Poetry configuration to create virtual environments inside the project
-ENV POETRY_NO_INTERACTION=1 \
-    POETRY_CACHE_DIR=/var/cache/pypoetry
+RUN curl -sSL https://install.python-poetry.org | python3 - && \
+    mkdir -p /home/vscode/.local/bin && \
+    chown -R vscode:vscode /home/vscode/.local && \
+    ln -s /root/.local/bin/poetry /home/vscode/.local/bin/poetry && \
+    echo 'set -U fish_user_paths /home/vscode/.local/bin $fish_user_paths' | sudo -u vscode fish
 
 
 
@@ -26,6 +29,14 @@ ENV POETRY_NO_INTERACTION=1 \
 # Install project dependencies
 COPY pyproject.toml poetry.lock ./
 
+# Set the PATH to use the virtual environment
+RUN mkdir -p /home/vscode/.config/fish && chown -R vscode:vscode /home/vscode/.config && \
+    echo 'set -U fish_user_paths /workspaces/'"$localWorkspaceFolderBasename"'/.venv/bin $fish_user_paths' >> /home/vscode/.config/fish/config.fish && \
+    chown -R vscode:vscode /home/vscode/.config
+
+RUN curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+
+RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 
 # Copy the rest of your project
 COPY . /app
