@@ -12,10 +12,7 @@
 		"ghcr.io/devcontainers/features/nvidia-cuda:1": {
 			"installToolkit": true
 		},
-		"ghcr.io/devcontainers-contrib/features/fish-apt-get:1": {},
-		"ghcr.io/devcontainers-contrib/features/starship:1": {},
 		"ghcr.io/prulloac/devcontainer-features/ollama:1": {},
-		"ghcr.io/devcontainers-contrib/features/poetry:2": {}
 	},
 	"containerEnv": {
 		"OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"
