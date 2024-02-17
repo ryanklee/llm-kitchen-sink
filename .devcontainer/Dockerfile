@@ -4,14 +4,8 @@ ENV PYTHONUNBUFFERED 1
 
 # Install Fish shell, curl, git, and Starship
 RUN apt-get update && apt-get install -y curl git fzf fd-find bat gnupg2 software-properties-common fish && \
-        curl \
-        git \
-        fzf \
-        fd-find \
-        bat \
-        gnupg2 \
-        software-properties-common \
-        fish \
+    && rm -rf /var/lib/apt/lists/*
+RUN chsh -s /usr/bin/fish vscode
     && rm -rf /var/lib/apt/lists/*
 RUN chsh -s /usr/bin/fish vscode
 
