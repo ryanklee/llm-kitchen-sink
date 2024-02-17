@@ -17,6 +17,13 @@ ENV POETRY_NO_INTERACTION=1
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true \
     POETRY_NO_INTERACTION=1 \
     PATH="/workspaces/${localWorkspaceFolderBasename}/.venv/bin:$PATH"
+# Install Poetry
+RUN curl -sSL https://install.python-poetry.org | python3 -
+
+# Set Poetry configuration to create virtual environments inside the project
+ENV POETRY_VIRTUALENVS_IN_PROJECT=true \
+    POETRY_NO_INTERACTION=1 \
+    PATH="/root/.local/bin:$PATH"
 
 # Install project dependencies
 COPY pyproject.toml poetry.lock* /app/
