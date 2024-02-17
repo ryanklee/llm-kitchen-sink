@@ -28,9 +28,14 @@ ENV POETRY_VIRTUALENVS_IN_PROJECT=true \
 # Install project dependencies
 COPY pyproject.toml poetry.lock* /app/
 
+# Set the working directory to /app
+WORKDIR /app
+
 # Set the PATH to use the virtual environment
-RUN poetry install --no-interaction --no-root \
-    && mkdir -p /home/vscode/.config/fish \
+RUN poetry install --no-interaction --no-root
+
+# Configure fish shell for the vscode user
+RUN mkdir -p /home/vscode/.config/fish \
     && chown -R vscode:vscode /home/vscode/.config/fish \
     && echo 'set -U fish_user_paths (poetry env info --path)/bin $fish_user_paths' >> /home/vscode/.config/fish/config.fish \
     && echo 'starship init fish | source' >> /home/vscode/.config/fish/config.fish
