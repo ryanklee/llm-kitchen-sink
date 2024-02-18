@@ -1,4 +1,5 @@
 {
+  "usageInstructions": "This file tracks issues related to the development environment. Only open issues should be present. Once resolved, issues should be removed. Update the file to reflect progress without confirmation. Add new issues from chat if not already present.",
   "issue": "Fish shell not set as default",
   "status": "open",
   "steps": [],
@@ -11,35 +12,6 @@
     "errorMessages": []
   }
 },
-{
-  "issue": "NVIDIA GPU support in Docker container",
-  "status": "resolved",
-  "steps": [
-    {
-      "description": "Confirmed nvidia-smi command is present and CUDA is working properly within the container.",
-      "timestamp": "2024-02-01T03:09:54Z"
-    }
-  ],
-  "metadata": {
-    "relatedFiles": [
-      ".devcontainer/Dockerfile",
-      ".devcontainer/docker-compose.yml",
-      ".devcontainer/devcontainer.json"
-    ],
-    "gitCommits": [
-      {
-        "hash": "35de44b",
-        "message": "Create the `.aider.notes.json` file with the initial structure for tracking NVIDIA GPU support in the Docker container."
-      },
-      {
-        "hash": "5f66015",
-        "message": "Updated .aider.notes.json to reflect the progress of NVIDIA GPU support in Docker container."
-      },
-      {
-        "hash": "39218c1",
-        "message": "Remove NVIDIA GPU support entry and add new problem about Fish shell not being set as default."
-      }
-    ],
     "errorMessages": []
   }
 }

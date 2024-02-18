@@ -20,11 +20,10 @@
 	"containerEnv": {
         "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"
     },	
-    },
 	"customizations": {
 		"vscode": {
 			"settings": {
-				"terminal.integrated.defaultProfile.linux": "Fish",
+				"terminal.integrated.defaultProfile.linux": "fish",
 				"terminal.integrated.profiles.linux": {
 					"fish": {
 						"path": "fish"
